@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import Article from "./pages/Article";
+import ArticleDetail from "./pages/ArticleDetail";
+import Clients from "./pages/Clients";
+import Events from "./pages/Events";
+import Home from "./pages/Home";
+import Store from "./pages/Store";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Sidebar>
+          <Routes>
+            <Route exact path="/" element={<Home />}></Route>
+            <Route path="/events" element={<Events />}></Route>
+            <Route path="/clients" element={<Clients />}></Route>
+            <Route path="/article" element={<Article />}></Route>
+            <Route path="/article/:id" element={<ArticleDetail />}></Route>
+            <Route path="/store" element={<Store />}></Route>
+          </Routes>
+        </Sidebar>
+      </BrowserRouter>
+      <Footer />
+    </>
   );
 }
 
